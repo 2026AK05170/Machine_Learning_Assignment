@@ -7,7 +7,7 @@ This project compares five classifiers for predicting whether a breast-cancer sa
 The Breast Cancer Wisconsin (Diagnostic) dataset is bundled with scikit-learn and attributed to the UCI Machine Learning Repository: https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic. It has 569 instances, 30 numerical inputs, 212 malignant and 357 benign cases, with no missing data. This project uses Malignant = 1 and Benign = 0, with a stratified 80/20 split and random_state=42.
 
 ## c. GitHub repository link
-Replace after publishing: https://github.com/your-username/your-repository-name
+Replace after publishing: [https://github.com/y/your-repository-name](https://github.com/2026AK05170/Machine_Learning_Assignment)
 
 ## d. Models used and comparison
 Models: Logistic Regression, Decision Tree, KNN, Gaussian Naive Bayes, and RBF SVM. Preprocessing is inside relevant pipelines to avoid test-data leakage.
@@ -21,6 +21,9 @@ Models: Logistic Regression, Decision Tree, KNN, Gaussian Naive Bayes, and RBF S
 | Decision Tree | 0.9211 | 0.9676 | 0.9459 | 0.8333 | 0.8861 | 0.8299 |
 
 All values are from the held-out test set and saved in results/model_comparison.csv.
+
+## e. Streamlit App
+Link: https://breastcancerclassifications.streamlit.app
 
 ## Observations
 - RBF SVM: Accuracy=0.974, ROC-AUC=0.995, Precision=1.000, Recall=0.929, F1=0.963, MCC=0.944. Results are from the same held-out test set.
