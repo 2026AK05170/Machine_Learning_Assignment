@@ -1,0 +1,13 @@
+RBF SVM: Accuracy=0.974, ROC-AUC=0.995, Precision=1.000, Recall=0.929, F1=0.963, MCC=0.944. Results are from the same held-out test set.
+
+Logistic Regression: Accuracy=0.965, ROC-AUC=0.996, Precision=0.975, Recall=0.929, F1=0.951, MCC=0.925. Results are from the same held-out test set.
+
+KNN: Accuracy=0.956, ROC-AUC=0.982, Precision=0.974, Recall=0.905, F1=0.938, MCC=0.906. Results are from the same held-out test set.
+
+Gaussian Naive Bayes: Accuracy=0.921, ROC-AUC=0.989, Precision=0.923, Recall=0.857, F1=0.889, MCC=0.829. Results are from the same held-out test set.
+
+Decision Tree: Accuracy=0.921, ROC-AUC=0.968, Precision=0.946, Recall=0.833, F1=0.886, MCC=0.830. Results are from the same held-out test set.
+
+Overall winner by malignant-class F1: RBF SVM (0.963). This result is for the fixed held-out split; a larger study should use cross-validation.
+
+Recall measures malignant cases detected. MCC uses all four confusion-matrix cells and complements accuracy.
