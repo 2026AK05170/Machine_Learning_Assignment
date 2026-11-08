@@ -60,8 +60,8 @@ FEATURE_HELP = {
 
 
 st.set_page_config(
-    page_title="OncoScope | Model Lab",
-    page_icon="◉",
+    page_title="Breast Cancer Analysis",
+    page_icon="◈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -71,36 +71,75 @@ st.markdown(
     <style>
         .stApp {
             background:
-              radial-gradient(circle at 92% 7%, #d7f6ed 0, transparent 21rem),
-              radial-gradient(circle at 4% 12%, #e5eeff 0, transparent 18rem),
-              #f8fbfa;
+              radial-gradient(circle at 88% 8%, #ece4ff 0, transparent 23rem),
+              radial-gradient(circle at 5% 18%, #dcd0ff 0, transparent 19rem),
+              linear-gradient(140deg, #faf9ff 0%, #f2efff 100%);
         }
         [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, #102c3b 0%, #173e4d 100%);
+            background: linear-gradient(180deg, #160b30 0%, #2a1452 56%, #42206d 100%);
         }
         [data-testid="stSidebar"] * { color: #f4fbfb !important; }
         .hero {
-            background: linear-gradient(118deg, #103b4a 0%, #18726c 54%, #4fa78f 100%);
+            background: linear-gradient(118deg, rgba(28, 10, 59, .90) 0%, rgba(73, 35, 126, .74) 58%, rgba(128, 89, 184, .62) 100%);
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, .38);
             padding: 2.1rem 2.3rem; border-radius: 22px; color: white;
-            box-shadow: 0 12px 30px rgba(18, 78, 83, .20); margin-bottom: 1.25rem;
+            box-shadow: 0 14px 34px rgba(47, 21, 86, .25); margin-bottom: 1.25rem;
         }
         .hero h1 { margin: 0; font-size: 2.15rem; letter-spacing: -.04em; }
-        .hero p { margin: .45rem 0 0; color: #d9f3ed; font-size: 1.02rem; }
-        .eyebrow { color: #9be2d1; font-size: .76rem; font-weight: 700; letter-spacing: .12em; }
+        .hero p { margin: .45rem 0 0; color: #eee8ff; font-size: 1.02rem; }
+        .eyebrow { color: #d9c7ff; font-size: .76rem; font-weight: 700; letter-spacing: .12em; }
         .model-pill {
             display: inline-block; padding: .32rem .68rem; border-radius: 99px;
-            background: #dff5ef; color: #0e6258; font-weight: 650; font-size: .82rem;
+            background: rgba(233, 220, 255, .94); color: #431b72; font-weight: 700; font-size: .82rem;
         }
         .section-note {
-            border-left: 4px solid #46a993; background: #edf8f5; padding: .8rem 1rem;
-            border-radius: 0 10px 10px 0; color: #28574f; margin: .5rem 0 1rem;
+            border: 1px solid rgba(115, 73, 174, .24); border-left: 4px solid #7042ad;
+            background: rgba(255, 255, 255, .58); backdrop-filter: blur(12px);
+            padding: .8rem 1rem; border-radius: 0 10px 10px 0; color: #352051; margin: .5rem 0 1rem;
         }
         [data-testid="stMetric"] {
-            background: rgba(255,255,255,.83); border: 1px solid #e2ece9;
-            border-radius: 14px; padding: .8rem; box-shadow: 0 3px 10px rgba(27,75,69,.05);
+            background: rgba(255,255,255,.62); backdrop-filter: blur(14px);
+            border: 1px solid rgba(117, 81, 175, .20);
+            border-radius: 14px; padding: .8rem; box-shadow: 0 5px 16px rgba(47, 21, 86, .08);
         }
-        .stButton > button, .stDownloadButton > button {
-            border-radius: 9px; border: 0; font-weight: 650;
+        .stButton > button, .stDownloadButton > button,
+        div[data-testid="stFileUploader"] button {
+            background: linear-gradient(100deg, #4c207e 0%, #7042ad 100%) !important;
+            color: #ffffff !important; border: 1px solid rgba(255,255,255,.55) !important;
+            border-radius: 9px; font-weight: 700; box-shadow: 0 5px 12px rgba(69, 29, 113, .22);
+        }
+        .stButton > button:hover, .stDownloadButton > button:hover,
+        div[data-testid="stFileUploader"] button:hover {
+            background: linear-gradient(100deg, #35145e 0%, #5b3194 100%) !important;
+            color: #ffffff !important; border-color: #ffffff !important;
+        }
+        [data-baseweb="select"] > div {
+            background: #ffffff !important; border: 1px solid #bda4e5 !important;
+            color: #2d1454 !important; box-shadow: 0 4px 12px rgba(31, 9, 63, .20);
+        }
+        [data-baseweb="select"] * { color: #2d1454 !important; }
+        ul[data-baseweb="menu"] { background: #ffffff !important; }
+        ul[data-baseweb="menu"] li { color: #2d1454 !important; }
+        div[data-testid="stFileUploader"] {
+            background: rgba(255,255,255,.70); border: 1px dashed #8a65bc;
+            border-radius: 13px; padding: .5rem;
+        }
+        div[data-testid="stFileUploader"] small,
+        div[data-testid="stFileUploader"] span { color: #402163 !important; }
+        [data-testid="stSidebar"] [data-baseweb="slider"] * { color: #f7f3ff !important; }
+        [data-testid="stSidebar"] [data-baseweb="radio"] label { color: #ffffff !important; }
+        .stTabs [data-baseweb="tab-list"] { gap: 1.2rem; }
+        .stTabs [data-baseweb="tab"] { color: #4b2878; font-weight: 650; }
+        .stTabs [aria-selected="true"] { color: #2e105b !important; border-bottom-color: #63389d !important; }
+        .stDataFrame { border-radius: 12px; overflow: hidden; }
+        h1, h2, h3 { color: #2c124f; }
+        p, li { color: #3e2b55; }
+        [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3, [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] label { color: #ffffff !important; }
+        [data-testid="stSidebar"] .stSlider [data-baseweb="slider"] div[role="slider"] {
+            background: #f0e6ff !important; border-color: #ffffff !important;
         }
     </style>
     """,
@@ -146,8 +185,8 @@ def metric_cards(y_true, y_pred, probability):
 
 
 with st.sidebar:
-    st.markdown("## ◉ OncoScope")
-    st.caption("Breast Cancer Model Lab")
+    st.markdown("## ◈ Breast Cancer")
+    st.caption("Analysis dashboard")
     st.divider()
     selected_name = st.selectbox("Select a saved classifier", list(MODEL_OPTIONS))
     st.markdown(f"<span class='model-pill'>{MODEL_OPTIONS[selected_name]['short']}</span>", unsafe_allow_html=True)
@@ -167,9 +206,9 @@ with st.sidebar:
 st.markdown(
     """
     <div class="hero">
-      <div class="eyebrow">INTERACTIVE EVALUATION DASHBOARD</div>
-      <h1>OncoScope Model Lab</h1>
-      <p>Compare saved classifiers on held-out diagnostic data without retraining.</p>
+      <div class="eyebrow">INTERACTIVE MACHINE LEARNING DASHBOARD</div>
+      <h1>Breast Cancer Analysis</h1>
+      <p>Explore saved classifiers on held-out diagnostic data without retraining.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -261,7 +300,7 @@ with evaluate_tab:
             matrix = confusion_matrix(y_true, y_pred, labels=[0, 1])
             fig, ax = plt.subplots(figsize=(5.3, 4.3))
             sns.heatmap(
-                matrix, annot=True, fmt="d", cmap="GnBu", cbar=False, square=True,
+                matrix, annot=True, fmt="d", cmap="Purples", cbar=False, square=True,
                 xticklabels=["Benign", "Malignant"], yticklabels=["Benign", "Malignant"],
                 linewidths=.5, linecolor="white", ax=ax,
             )
@@ -275,8 +314,8 @@ with evaluate_tab:
             fig, ax = plt.subplots(figsize=(5.3, 4.3))
             if y_true.nunique() == 2:
                 fpr, tpr, _ = roc_curve(y_true, probability, pos_label=1)
-                ax.plot(fpr, tpr, color="#177c71", linewidth=2.8, label=f"AUC = {metrics['ROC-AUC']:.3f}")
-                ax.plot([0, 1], [0, 1], "--", color="#96aaa6", label="Random baseline")
+                ax.plot(fpr, tpr, color="#63389d", linewidth=2.8, label=f"AUC = {metrics['ROC-AUC']:.3f}")
+                ax.plot([0, 1], [0, 1], "--", color="#aa98bf", label="Random baseline")
                 ax.legend(loc="lower right", frameon=False)
             else:
                 ax.text(.5, .5, "ROC curve needs both classes.", ha="center", va="center")
@@ -341,7 +380,7 @@ with compare_tab:
         )
         ranking = comparison.sort_values(selected_metric, ascending=False)
         fig, ax = plt.subplots(figsize=(8.5, 4.1))
-        sns.barplot(data=ranking, x=selected_metric, y="Model", palette="crest", ax=ax)
+        sns.barplot(data=ranking, x=selected_metric, y="Model", palette="Purples", ax=ax)
         ax.set_title(f"Model ranking by {selected_metric}")
         ax.set_xlim(0, max(1.0, ranking[selected_metric].max() + .05))
         for container in ax.containers:
